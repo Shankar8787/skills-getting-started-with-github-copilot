@@ -21,6 +21,42 @@ app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
 
 # In-memory activity database
 activities = {
+    "Basketball Team": {
+        "description": "Join the school basketball team and compete in local leagues",
+        "schedule": "Mondays and Thursdays, 4:00 PM - 6:00 PM",
+        "max_participants": 15,
+        "participants": ["liam@mergington.edu", "noah@mergington.edu"]
+    },
+    "Soccer Club": {
+        "description": "Practice soccer skills and play friendly matches",
+        "schedule": "Wednesdays, 3:30 PM - 5:30 PM",
+        "max_participants": 18,
+        "participants": ["ava@mergington.edu", "mia@mergington.edu"]
+    },
+    "Drama Club": {
+        "description": "Participate in school plays and improve acting skills",
+        "schedule": "Tuesdays, 4:00 PM - 5:30 PM",
+        "max_participants": 20,
+        "participants": ["isabella@mergington.edu", "lucas@mergington.edu"]
+    },
+    "Art Workshop": {
+        "description": "Explore painting, drawing, and other visual arts",
+        "schedule": "Fridays, 3:30 PM - 5:00 PM",
+        "max_participants": 16,
+        "participants": ["amelia@mergington.edu", "charlotte@mergington.edu"]
+    },
+    "Debate Team": {
+        "description": "Develop public speaking and argumentation skills",
+        "schedule": "Thursdays, 3:30 PM - 5:00 PM",
+        "max_participants": 10,
+        "participants": ["benjamin@mergington.edu", "elijah@mergington.edu"]
+    },
+    "Math Club": {
+        "description": "Solve challenging math problems and prepare for competitions",
+        "schedule": "Mondays, 3:30 PM - 4:30 PM",
+        "max_participants": 14,
+        "participants": ["logan@mergington.edu", "harper@mergington.edu"]
+    },
     "Chess Club": {
         "description": "Learn strategies and compete in chess tournaments",
         "schedule": "Fridays, 3:30 PM - 5:00 PM",
@@ -39,45 +75,6 @@ activities = {
         "max_participants": 30,
         "participants": ["john@mergington.edu", "olivia@mergington.edu"]
     },
-    # Sports activities
-    "Soccer Team": {
-        "description": "Join the school soccer team and compete in local leagues",
-        "schedule": "Tuesdays and Thursdays, 4:00 PM - 5:30 PM",
-        "max_participants": 22,
-        "participants": ["lucas@mergington.edu", "mia@mergington.edu"]
-    },  
-    "Basketball Club": {
-        "description": "Practice basketball skills and play friendly matches",
-        "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
-        "max_participants": 15,
-        "participants": ["liam@mergington.edu", "ava@mergington.edu"]
-    },
-    # Artistic activities
-    "Art Club": {
-        "description": "Explore painting, drawing, and other visual arts",
-        "schedule": "Mondays, 3:30 PM - 5:00 PM",
-        "max_participants": 18,
-        "participants": ["noah@mergington.edu", "isabella@mergington.edu"]
-    },
-    "Drama Society": {
-        "description": "Participate in theater productions and acting workshops",
-        "schedule": "Fridays, 4:00 PM - 6:00 PM",
-        "max_participants": 25,
-        "participants": ["amelia@mergington.edu", "benjamin@mergington.edu"]
-    },
-    # Intellectual activities
-    "Math Olympiad": {
-        "description": "Prepare for math competitions and solve challenging problems",
-        "schedule": "Thursdays, 3:30 PM - 5:00 PM",
-        "max_participants": 16,
-        "participants": ["elijah@mergington.edu", "charlotte@mergington.edu"]
-    },
-    "Science Club": {
-        "description": "Conduct experiments and explore scientific concepts",
-        "schedule": "Wednesdays, 4:00 PM - 5:30 PM",
-        "max_participants": 20,
-        "participants": ["james@mergington.edu", "harper@mergington.edu"]
-    }
 }
 
 
@@ -103,7 +100,7 @@ def signup_for_activity(activity_name: str, email: str):
     activity = activities[activity_name]
 
     # Validate student is not already signed up
-    if email in activities[activity_name]["participants"]:
+    if email in activity["participants"]:
         raise HTTPException(status_code=400, detail="Student is already signed up")
 
     # Add student
