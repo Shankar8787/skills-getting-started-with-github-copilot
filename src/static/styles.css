@@ -160,3 +160,13 @@ footer {
   padding: 20px;
   color: #666;
 }
+
+.participant-info {
+  background-color: #f0f8ff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 16px;
+}
